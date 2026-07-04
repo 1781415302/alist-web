@@ -595,3 +595,13 @@ export const cleanSessions = (data?: {
 }): PEmptyResp => {
   return r.post("/admin/session/clean", data || {})
 }
+
+export const fsPlayCountReport = (path: string): PEmptyResp => {
+  return r.post("/fs/playcount/report", { path })
+}
+
+export const fsPlayCountQuery = (
+  paths: string[],
+): PResp<{ path: string; count: number; last_played: string }[]> => {
+  return r.post("/fs/playcount/query", { paths })
+}

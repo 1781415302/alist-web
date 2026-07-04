@@ -1,5 +1,15 @@
 ## Usage
 
+## Fork changes
+
+This fork adds play count support for AList media files:
+
+- Shows play count badges in the web file list, grid view, and file detail view.
+- Reports playback when media is opened from the built-in web player or from the context-menu external-player flow.
+- Adds the `zh-CN` language pack to the tracked source tree and uses Simplified Chinese as the default bundled language.
+
+The web client expects an AList backend that provides `/api/fs/playcount/report` and `/api/fs/playcount/query`.
+
 Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
 
 This is the reason you see a `pnpm-lock.yaml`. That being said, any package manager will work. This file can be safely be removed once you clone a template.

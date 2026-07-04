@@ -33,6 +33,7 @@ import { ItemCheckbox, useSelectWithMouse } from "./helper"
 import { me } from "~/store"
 import { getColorWithOpacity } from "~/utils/color"
 import { pathJoin } from "~/utils/path"
+import { BiRegularShow } from "solid-icons/bi"
 
 interface Label {
   id: number
@@ -332,6 +333,26 @@ export const ListItem = (props: { obj: StoreObj & Obj; index: number }) => {
                     }}
                   >
                     {storageClassLabel()}
+                  </Badge>
+                </Show>
+                <Show when={!props.obj.is_dir && props.obj.play_count}>
+                  <Badge
+                    variant="subtle"
+                    colorScheme="neutral"
+                    css={{
+                      "flex-shrink": 0,
+                      "font-size": "0.65rem",
+                      display: "inline-flex",
+                      "align-items": "center",
+                      gap: "$1",
+                      "padding-left": "$1_5",
+                      "padding-right": "$1_5",
+                      "border-radius": "$full",
+                      height: "$5",
+                    }}
+                  >
+                    <BiRegularShow size={12} />
+                    {props.obj.play_count}
                   </Badge>
                 </Show>
               </Text>

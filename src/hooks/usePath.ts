@@ -21,6 +21,7 @@ import {
   log,
   notify,
   pathJoin,
+  fsPlayCountQuery,
 } from "~/utils"
 import { useFetch } from "./useFetch"
 import { useRouter } from "./useRouter"
@@ -383,6 +384,21 @@ export const usePath = () => {
         // 设置路径为目录
         setPathAs(path)
         ObjStore.setState(State.Folder)
+        const filePaths = (data.content ?? [])
+          .filter((obj: any) => !obj.is_dir)
+          .map((obj: any) => pathJoin(path, obj.name))
+        if (filePaths.length > 0) {
+          fsPlayCountQuery(filePaths)
+            .then((resp) => {
+              if (pathname() === path && resp.code === 200 && resp.data) {
+                const countMap = new Map(
+                  resp.data.map((item) => [item.path, item.count]),
+                )
+                ObjStore.setPlayCounts(countMap, path)
+              }
+            })
+            .catch(() => {})
+        }
         logListRenderPerf(
           path,
           responsePage,

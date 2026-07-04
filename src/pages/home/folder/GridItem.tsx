@@ -16,6 +16,7 @@ import { bus, hoverColor, normalizeStorageClass } from "~/utils"
 import { getIconByObj } from "~/utils/icon"
 import { ItemCheckbox, useSelectWithMouse } from "./helper"
 import { pathJoin } from "~/utils/path"
+import { BiRegularShow } from "solid-icons/bi"
 
 export const GridItem = (props: { obj: StoreObj & Obj; index: number }) => {
   const { isHide } = useUtil()
@@ -171,6 +172,25 @@ export const GridItem = (props: { obj: StoreObj & Obj; index: number }) => {
               css={{ "font-size": "0.65rem" }}
             >
               {storageClassLabel()}
+            </Badge>
+          </Show>
+          <Show when={!props.obj.is_dir && props.obj.play_count}>
+            <Badge
+              variant="subtle"
+              colorScheme="neutral"
+              css={{
+                "font-size": "0.65rem",
+                display: "inline-flex",
+                "align-items": "center",
+                gap: "$1",
+                "padding-left": "$1_5",
+                "padding-right": "$1_5",
+                "border-radius": "$full",
+                height: "$5",
+              }}
+            >
+              <BiRegularShow size={12} />
+              {props.obj.play_count}
             </Badge>
           </Show>
         </VStack>

@@ -7,6 +7,7 @@ import { bus, log, trimBase } from "~/utils"
 import { keyPressed } from "./key-event"
 import { local } from "./local_settings"
 import { getSettingBool } from "./settings"
+import { pathJoin } from "~/utils/path"
 
 export enum State {
   Initial, // Initial state
@@ -97,6 +98,11 @@ export const ObjStore = {
   // },
   setState: (state: State) => setObjStore("state", state),
   setErr: (err: string) => setObjStore("err", err),
+  setPlayCounts: (countMap: Map<string, number>, path: string) => {
+    setObjStore("objs", {}, (obj) => ({
+      play_count: countMap.get(pathJoin(path, obj.name)) ?? obj.play_count,
+    }))
+  },
 }
 
 export type OrderBy = "name" | "size" | "modified"

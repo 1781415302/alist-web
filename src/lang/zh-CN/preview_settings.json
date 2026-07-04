@@ -1,0 +1,30 @@
+{
+  "add_extension": "添加扩展名",
+  "add_iframe": "添加 iframe 预览器",
+  "copy_to_extensions": "复制设置到...",
+  "source": {
+    "builtin": "内置",
+    "iframe": "iframe",
+    "external": "外部"
+  },
+  "builtin": {
+    "html": "HTML 渲染",
+    "aliyun_video": "阿里云视频预览器",
+    "doubao": "豆包预览",
+    "markdown": "Markdown",
+    "markdown_word_wrap": "Markdown（自动换行）",
+    "url_open": "打开链接",
+    "text_editor": "文本编辑器",
+    "image": "图片",
+    "video": "视频",
+    "audio": "音频",
+    "ipa": "Ipa",
+    "plist": "Plist",
+    "aliyun_office": "阿里云 Office 预览器",
+    "asciinema": "Asciinema",
+    "video360": "全景视频",
+    "archive": "压缩包预览",
+    "lark_preview": "飞书预览",
+    "lark_tools": "飞书导出工具"
+  }
+}

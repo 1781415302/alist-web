@@ -29,6 +29,7 @@ import { useLabels } from "~/store/label"
 import {
   createLabelFileBinding,
   createLabelFileBindingBatch,
+  fsPlayCountReport,
 } from "~/utils/api"
 import { usePath } from "~/hooks"
 import { AiOutlineTag } from "solid-icons/ai"
@@ -279,6 +280,8 @@ export const ContextMenu = () => {
               {(player) => (
                 <Item
                   onClick={({ props }) => {
+                    const path = pathJoin(getCurrentPath(), props.name)
+                    fsPlayCountReport(path).catch(() => {})
                     const href = convertURL(player.scheme, {
                       raw_url: "",
                       name: props.name,

@@ -19,6 +19,7 @@ export interface StoreObj {
   type: number
   selected?: boolean
   storage_class?: string
+  play_count?: number
   label_list?: {
     id: number
     name: string

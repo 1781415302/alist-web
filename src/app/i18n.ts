@@ -18,16 +18,7 @@ for (const path in langs) {
     lang: langs[path] as string,
   })
 }
-const defaultLang =
-  languages.find(
-    (lang) => lang.code.toLowerCase() === navigator.language.toLowerCase(),
-  )?.code ||
-  languages.find(
-    (lang) =>
-      lang.code.toLowerCase().split("-")[0] ===
-      navigator.language.toLowerCase().split("-")[0],
-  )?.code ||
-  "en"
+const defaultLang = "zh-CN"
 
 export let initialLang = localStorage.getItem("lang") ?? ""
 if (!initialLang || !languages.find((lang) => lang.code === initialLang)) {

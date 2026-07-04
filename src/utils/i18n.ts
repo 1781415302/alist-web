@@ -28,7 +28,7 @@ export const getCurrentLang = () => {
 
 // 检查是否为中文
 export const isChinese = () => {
-  return getCurrentLang() === "zh"
+  return getCurrentLang().toLowerCase().startsWith("zh")
 }
 
 // 根据语言返回不同的文本

@@ -1,15 +1,20 @@
 import { HStack, VStack } from "@hope-ui/solid"
-import { createMemo, createSignal, Show, Suspense } from "solid-js"
+import { createMemo, createSignal, Show, Suspense, onMount } from "solid-js"
 import { Dynamic } from "solid-js/web"
 import { FullLoading, SelectWrapper } from "~/components"
 import { objStore } from "~/store"
 import { Download } from "../previews/download"
 import { OpenWith } from "./open-with"
 import { getPreviews } from "../previews"
-import { useT } from "~/hooks"
+import { useT, useRouter } from "~/hooks"
+import { fsPlayCountReport } from "~/utils/api"
 
 const File = () => {
   const t = useT()
+  const { pathname } = useRouter()
+  onMount(() => {
+    fsPlayCountReport(pathname()).catch(() => {})
+  })
   const previews = createMemo(() => {
     return getPreviews({
       ...objStore.obj,
